@@ -120,8 +120,8 @@ const TRANSLATIONS = {
         s13p: "Organizational support and registration of patents, trademarks, and IP rights with Egyptian government authorities.",
         s14h: "Forensic Accounting & Financial Investigation",
         s14p: "Specialized financial investigations to detect fraud and manipulation in records, with certified court-ready reports for legal disputes.",
-	s15h: "Real Estate Appraisal & Asset Verification",
-	s15p: "Professional real estate appraisal for banking, litigation, insurance, and investment purposes, with reports prepared under the International Valuation Standards (IVS) and FRA requirements.",
+        s15h: "Real Estate Appraisal & Asset Verification",
+        s15p: "Professional real estate appraisal for banking, litigation, insurance, and investment purposes, with reports prepared under the International Valuation Standards (IVS) and FRA requirements.",
         
 /* Sectors */
 sec_eb: "SECTORS WE SERVE",
