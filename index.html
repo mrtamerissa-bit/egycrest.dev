@@ -159,14 +159,14 @@
         <img src="logo.png" alt="EgyCrest Financial" class="drawer-logo" width="150" height="50" loading="lazy" decoding="async">
         <button class="drawer-close" onclick="closeMenu()" aria-label="Close">✕</button>
     </div>
-    <nav class="drawer-nav">
+   <nav class="drawer-nav">
         <a href="#home" onclick="gotoPage('home','home'); closeMenu(); return false;" data-i18n="nav_home">الرئيسية</a>
         <a href="#services" onclick="gotoPage('home','services'); closeMenu(); return false;" data-i18n="nav_services">خدماتنا</a>
-        <a href="#blog" onclick="gotoPage('blog'); closeMenu(); return false;" data-i18n="nav_blog">المدونة</a>
         <a href="#pricing" onclick="gotoPage('pricing'); closeMenu(); return false;" data-i18n="nav_pricing">الباقات</a>
+        <button class="drawer-calc" onclick="closeMenu(); openCalc();" data-i18n="nav_calculators">حاسبة الضريبة والرسوم</button>
+        <a href="#blog" onclick="gotoPage('blog'); closeMenu(); return false;" data-i18n="nav_blog">المدونة</a>
         <a href="#academy" onclick="gotoPage('academy'); closeMenu(); return false;" data-i18n="nav_academy">الأكاديمية</a>
         <a href="#contact" onclick="gotoPage('contact'); closeMenu(); return false;" data-i18n="nav_contact">تواصل معنا</a>
-	<button class="drawer-calc" onclick="closeMenu(); openCalc();" data-i18n="nav_calculators">حاسبة الضريبة والرسوم</button>
     </nav>
     <div class="drawer-footer">
         <a href="https://wa.me/201152255991" target="_blank" rel="noopener" class="drawer-cta">
