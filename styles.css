@@ -305,7 +305,7 @@ nav button.nav-active::after {
 .mobile-drawer {
     position: fixed;
     top: 0;
-    inset-inline-end: 0;
+    right: 0;
     height: 100vh;
     width: 320px;
     max-width: 85vw;
@@ -316,9 +316,28 @@ nav button.nav-active::after {
     display: flex;
     flex-direction: column;
     box-shadow: -8px 0 32px -8px rgba(0,0,0,0.25);
+    visibility: hidden;
 }
-html[dir="rtl"] .mobile-drawer { transform: translateX(-100%); }
-.mobile-drawer.open { transform: translateX(0); }
+
+html[dir="rtl"] .mobile-drawer {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: 8px 0 32px -8px rgba(0,0,0,0.25);
+}
+
+html[dir="ltr"] .mobile-drawer {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+}
+
+.mobile-drawer.open,
+html[dir="rtl"] .mobile-drawer.open,
+html[dir="ltr"] .mobile-drawer.open {
+    transform: translateX(0);
+    visibility: visible;
+}
 
 .drawer-head {
     display: flex;
