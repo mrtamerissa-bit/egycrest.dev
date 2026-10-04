@@ -730,11 +730,26 @@ function toggleMenu() {
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('drawerOverlay');
     const btn = document.getElementById('hamburger');
+    if (!drawer || !overlay) {
+        alert('ERROR: drawer or overlay not found');
+        return;
+    }
+
     const isOpen = drawer.classList.toggle('open');
     overlay.classList.toggle('open', isOpen);
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
     document.body.classList.toggle('no-scroll', isOpen);
+
+    /* DIAGNOSTIC — remove after fixing */
+    alert(
+        'Lang: ' + document.documentElement.lang + '\n' +
+        'Dir: ' + document.documentElement.dir + '\n' +
+        'isOpen: ' + isOpen + '\n' +
+        'drawer class: ' + drawer.className + '\n' +
+        'drawer z-index: ' + getComputedStyle(drawer).zIndex + '\n' +
+        'drawer transform: ' + getComputedStyle(drawer).transform
+    );
 }
 
 function closeMenu() {
