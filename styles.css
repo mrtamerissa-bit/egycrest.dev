@@ -273,6 +273,8 @@ nav button.nav-active::after {
     align-items: center;
     width: 40px;
     height: 40px;
+    position: relative;
+    z-index: 2000;
 }
 .hamburger span {
     display: block;
@@ -303,7 +305,7 @@ nav button.nav-active::after {
 }
 
 .mobile-drawer {
-    position: fixed;
+   position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
@@ -312,11 +314,12 @@ nav button.nav-active::after {
     background: var(--white);
     z-index: 1999;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, visibility 0.3s;
     display: flex;
     flex-direction: column;
     box-shadow: -8px 0 32px -8px rgba(0,0,0,0.25);
     visibility: hidden;
+    pointer-events: none;
 }
 
 html[dir="rtl"] .mobile-drawer {
@@ -337,6 +340,7 @@ html[dir="rtl"] .mobile-drawer.open,
 html[dir="ltr"] .mobile-drawer.open {
     transform: translateX(0);
     visibility: visible;
+    pointer-events: auto;
 }
 
 .drawer-head {
@@ -2501,4 +2505,27 @@ body.lang-en .ai-msg.user {
         transition: opacity 0.001ms, background 0.001ms, color 0.001ms !important;
     }
     .mobile-drawer { transition: none !important; }
+}
+/* ===== RTL MOBILE DRAWER FIX ===== */
+@media (max-width: 980px) {
+    html[dir="rtl"] .mobile-drawer {
+        left: 0 !important;
+        right: auto !important;
+        transform: translateX(-100%);
+        z-index: 2500;
+    }
+    html[dir="rtl"] .mobile-drawer.open {
+        transform: translateX(0);
+    }
+    html[dir="rtl"] .mobile-drawer-overlay {
+        z-index: 2499;
+    }
+    html[dir="ltr"] .mobile-drawer {
+        right: 0 !important;
+        left: auto !important;
+        z-index: 2500;
+    }
+    html[dir="ltr"] .mobile-drawer-overlay {
+        z-index: 2499;
+    }
 }
