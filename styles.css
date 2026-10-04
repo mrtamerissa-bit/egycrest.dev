@@ -273,8 +273,6 @@ nav button.nav-active::after {
     align-items: center;
     width: 40px;
     height: 40px;
-    position: relative;
-    z-index: 2000;
 }
 .hamburger span {
     display: block;
