@@ -737,8 +737,42 @@ function toggleMenu() {
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
     document.body.classList.toggle('no-scroll', isOpen);
-}
-    /* DIAGNOSTIC — remove after fixing */
+
+    /* Force inline styles — overrides any CSS specificity issue */
+    if (isOpen) {
+        drawer.style.position = 'fixed';
+        drawer.style.top = '0';
+        drawer.style.height = '100vh';
+        drawer.style.width = '320px';
+        drawer.style.maxWidth = '85vw';
+        drawer.style.background = '#FFFFFF';
+        drawer.style.display = 'flex';
+        drawer.style.flexDirection = 'column';
+        drawer.style.visibility = 'visible';
+        drawer.style.pointerEvents = 'auto';
+        drawer.style.zIndex = '9999';
+        drawer.style.boxShadow = '0 0 32px rgba(0,0,0,0.35)';
+
+        // Position based on language direction
+        if (document.documentElement.dir === 'rtl') {
+            drawer.style.left = '0';
+            drawer.style.right = 'auto';
+        } else {
+            drawer.style.right = '0';
+            drawer.style.left = 'auto';
+        }
+        drawer.style.transform = 'translateX(0)';
+    } else {
+        // Reset to closed state (CSS takes over again)
+        drawer.style.transform = '';
+        drawer.style.visibility = '';
+        drawer.style.pointerEvents = '';
+        drawer.style.left = '';
+        drawer.style.right = '';
+        drawer.style.zIndex = '';
+        drawer.style.boxShadow = '';
+    }
+}    /* DIAGNOSTIC — remove after fixing */
     alert(
         'Lang: ' + document.documentElement.lang + '\n' +
         'Dir: ' + document.documentElement.dir + '\n' +
@@ -753,13 +787,23 @@ function closeMenu() {
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('drawerOverlay');
     const btn = document.getElementById('hamburger');
+    if (!drawer || !overlay) return;
+
     drawer.classList.remove('open');
     overlay.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     drawer.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
-}
 
+    /* Clear inline styles so CSS takes over */
+    drawer.style.transform = '';
+    drawer.style.visibility = '';
+    drawer.style.pointerEvents = '';
+    drawer.style.left = '';
+    drawer.style.right = '';
+    drawer.style.zIndex = '';
+    drawer.style.boxShadow = '';
+}
 /* ========== BLOG ACCORDION ========== */
 function togglePost(btn) {
     const post = btn.parentElement;
